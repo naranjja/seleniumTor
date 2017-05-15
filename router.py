@@ -48,13 +48,14 @@ def check_tor():
         return False
 
 
+def main():
+    # write Selenium code
+    pass
+
 
 if __name__ == '__main__':
     binary = FirefoxBinary('{}\\Browser\\firefox.exe'.format(open('path.txt', 'r').read().strip('\n')))
-
     setup_tor(binary)
     check_tor()
-
-    # do something
-
+    main()
     driver.quit()
