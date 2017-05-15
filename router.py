@@ -1,10 +1,20 @@
 from selenium import webdriver
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 from selenium.common.exceptions import NoSuchElementException
+from subprocess import Popen
+from os import getcwd
+from time import sleep
 
-def setup_tor(binary):
+def setup_tor(binary, delay=False):
     global driver
+
+    Popen('initialize.bat', cwd=getcwd())
+
+    if delay:
+        sleep(delay)
+
     driver = webdriver.Firefox(firefox_binary=binary)
+
     driver.profile.set_preference('network.proxy.type', 1)
     driver.profile.set_preference('network.proxy.socks', '127.0.0.1')
     driver.profile.set_preference('network.proxy.socks_port', 9051)
@@ -40,7 +50,7 @@ def check_tor():
 
 
 if __name__ == '__main__':
-    binary = FirefoxBinary('path/to/Tor Browser/Browser/firefox.exe')
+    binary = FirefoxBinary('{}\\Browser\\firefox.exe'.format(open('path.txt', 'r').read().strip('\n')))
 
     setup_tor(binary)
     check_tor()
