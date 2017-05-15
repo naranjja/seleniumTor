@@ -58,4 +58,3 @@ if __name__ == '__main__':
     setup_tor(binary)
     check_tor()
     main()
-    driver.quit()
