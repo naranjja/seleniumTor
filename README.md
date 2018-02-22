@@ -1,4 +1,4 @@
-# onion-python
+# :white_check_mark: seleniumTor
 Use Python Selenium through Tor
 
 ### Requirements
